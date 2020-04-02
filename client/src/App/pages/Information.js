@@ -3,7 +3,6 @@ import Card from './Card';
 import './Pages.css';
 
 class Information extends Component {
-  // Initialize the state
   constructor(props){
     super(props);
     this.state = {
@@ -12,17 +11,17 @@ class Information extends Component {
     }
   }
 
-  // Fetch the list on first mount
   componentDidMount() {
     this.setState({isLoading: true})
-    fetch('/api/getList')
+    fetch('/api/teamInfo')
       .then((response) => response.json())
       .then((data) => this.setState({results: data, isLoading: false}))
   }
 
   renderCountries() {
     const {results} = this.state
-    const allCountries = results.map((item, id) => <Card key={id} title={item.country} url={item.fifa_code}/>);
+    const allCountries = results.map((item, id) => <Card key={id} title={item.country} url={item.fifa_code} group={item.group_letter} />);
+    
     return allCountries;
   }
 

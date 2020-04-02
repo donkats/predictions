@@ -4,8 +4,9 @@ import './Pages.css';
 function Card (props) {
     return (
         <div className ="card">
-            <h5>{props.title}</h5>
-            <a href={props.url}>{props.url}</a>
+            <h3>Country: {props.title}</h3>
+            <a href={props.url}> {props.url}</a>
+            <h5>Group: {props.group}</h5>
         </div>
       );
 }

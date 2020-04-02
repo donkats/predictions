@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Information from './Information.js'
+import Information from './Information.js';
 import './Pages.css';
 
 class Home extends Component {
   render() {
     return (
-      <div className="wrapper">
-        <div className="countries">
-          <h1>Participating Countries</h1>
-          <Information />
-        </div>
-        <div className="button">
-          <h1>Project Home</h1>
-          {/* Link to List.js */}
-          <Link to={'./list'}>
-          <button variant="raised">
-              My List
+      <div className="homeWrapper">
+        <div className="heading">
+          <h1 className="mainTitle">Euro 2021 Predictor</h1>
+          <Link to={'./predictions'}>
+          <button className="predictButton">
+              Predict the scores!
           </button>
           </Link>
+        </div>
+        <div className="countries">
+          <h3 className="countriesHeading">Participating Countries</h3>
+          <Information />
         </div>
       </div>
     );
