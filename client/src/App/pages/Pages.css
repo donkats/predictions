@@ -1,11 +1,13 @@
 /* Styling for Home */
 
 .homeWrapper {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: left;
     margin: 0 0 0 0;
 }
 
 .heading {
+    min-height: 180px;
     background-color: teal;
     margin: 0 0 0 0;
     padding: 3px 3px 3px 3px;
@@ -15,8 +17,10 @@
     margin-left: 1%;
 }
 
-.countriesHeading {
-    margin-left: 5%;
+.subHeading {
+    text-align: center;
+    font-size: x-large;
+
 }
 
 /* Styling for Information */
@@ -30,6 +34,23 @@
 }
 
 /* Styling for Predictions */
+
+.inputFields {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: large;
+    padding: 5%;
+}
+
+.homeGoals {
+    text-align: center;
+    margin-right: 2%;
+}
+
+.awayGoals {
+    text-align: center;
+}
 
 /* Styling for Card */
 

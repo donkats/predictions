@@ -26,6 +26,14 @@ app.get('/api/teamInfo', (_, res) => {
     }
   }
 
+  app.get('/:id', (_, res) => {
+    fetch('https://worldcup.sfg.io/teams/')
+      .then((response) => response.json())
+      .then((items) => items.sort(sortMenuItems))
+      .then((team) => team.map(({country, fifa_code, group_letter})=>({country, fifa_code, group_letter})))
+        .then((data) => res.json(data))
+      })
+
 // app.get('*', (req,res) =>{
 //     res.sendFile(path.join(__dirname+'/client/build/index.html'));
 // });

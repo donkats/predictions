@@ -16,7 +16,7 @@ class Home extends Component {
           </Link>
         </div>
         <div className="countries">
-          <h3 className="countriesHeading">Participating Countries</h3>
+          <h3 className="subHeading">Participating Countries</h3>
           <Information />
         </div>
       </div>

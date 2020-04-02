@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Pages.css';
 
 const mockResult = 'away'
@@ -42,15 +43,32 @@ class Predictions extends Component {
 
   render() {
     return (
-      <div className="inputFields">
-        <div>
+      <div className="homeWrapper">
+        <div className="heading">
+          <h1 className="mainTitle">Euro 2021 Predictor</h1>
+          <Link to={'./'}>
+          <button className="predictButton">
+              Back to team info!
+          </button>
+          </Link>
+        </div>
+
+        <div className="predictions">
+          <h3 className="subHeading">Your prediction for the next match</h3>
+        </div>
+
+        <div className="inputFields">
+        <div className="homeGoals">
+          <div>Home goals</div>
           <input type="text" value={this.state.homeGoals} onChange={this.changeHandler} />
           <div>{this.state.homeGoals}</div>
         </div>
-        <div>
+        <div className="awayGoals">
+          <div>Away goals</div>
           <input type="text" value={this.state.awayGoals} onChange={this.changeHandler} />
           <div>{this.state.awayGoals}</div>
         </div>
+      </div>
       </div>
     );
   }
