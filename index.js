@@ -3,18 +3,15 @@ const path = require('path');
 const app = express();
 const fetch = require("node-fetch");
 
-const baseUrl = "https://worldcup.sfg.io/matches/country?fifa_code=";
-const teamCode = "USA";
-const apiUrl = baseUrl + teamCode;
-
-app.use(express.static(path.join(__dirname, 'client/build')));
+// app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/api/teamInfo', (_, res) => {
     fetch('https://worldcup.sfg.io/teams/')
       .then((response) => response.json())
       .then((items) => items.sort(sortMenuItems))
-      .then((data) => res.json(data));
-  });
+      .then((team) => team.map(({country, fifa_code, group_letter})=>({country, fifa_code, group_letter})))
+        .then((data) => res.json(data))
+      })
 
   function sortMenuItems(a, b) {
     const groupOfCountryA = a.group_letter.toUpperCase();

@@ -19,7 +19,7 @@ function calculator(home, away) {
     result = 'draw'
   }
   if (result === mockResult) {
-    userPoints + 5;
+    userPoints += 5;
   }
   return userPoints;
 }
