@@ -1,0 +1,21 @@
+/* Styling for Home */
+
+/* Styling for Information */
+
+.information {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Styling for List */
+
+/* Styling for Card */
+
+.card {
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    margin-left: 10px;
+}
