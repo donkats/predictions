@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Match from './Match.js';
-import Calculations from './Calculations.js'
+import Form from './components/Form.js'
 import './Pages.css';
 
 class Predictions extends Component {
@@ -41,61 +41,25 @@ class Predictions extends Component {
               </button>
           </Link>
         </div>
-
         <div className="predictions">
           <h3 className="subHeading">Your prediction for the next match</h3>
         </div>
-        <div className='matches'>
-          {this.renderMatches()}
-        </div>
 
-        <div className="calculatorWrapper">
-          <h3 className="calcHeading">Fill in your scores</h3>
-          <Calculations />
-        </div>
-
+        <div className="pageWrapper">
+          <div className='matches'>
+            {this.renderMatches()}
+          </div>
+          <div className="calculatorWrapper">
+            <Form />
+          </div>
+          </div>
+          <div className="explanation">
+            <h3>How are the scores calculated?</h3>
+            <h4>If you guess correctly which team winst the match/ the match ends in a draw you get 5 points. If you also predict the goal difference correctly you get 2 bonus points.</h4>
+          </div>
       </div>
     );
   }
 }
-
-
-// class Predictions extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       name: '',
-//       value: '',
-//     }
-//   }
-
-//   changeHandler = (event) => {
-//     this.setState({
-//       homeGoals: event.target.homeGoals,
-//       awayGoals: event.target.homeGoals,
-//     });
-//   }
-
-//   render() {
-//     return (
-//       <div className="homeWrapper">
-//         <div className="heading">
-//           <h1 className="mainTitle">Euro 2021 Predictor</h1>
-//           <Link to={'./'}>
-//           <button className="predictButton">
-//               Back to team info!
-//           </button>
-//           </Link>
-//         </div>
-
-//         <div className="predictions">
-//           <h3 className="subHeading">Your prediction for the next match</h3>
-//         </div>
-
-//         <div className="matchInfo">
-//           <
-
-
-//         </div>
 
 export default Predictions;

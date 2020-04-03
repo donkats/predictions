@@ -36,21 +36,18 @@
 
 /* Styling for Predictions */
 
-.inputFields {
+.pageWrapper{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    font-size: large;
-    padding: 5%;
+    max-height: 400px;
 }
 
-.homeGoals {
-    text-align: center;
-    margin-right: 2%;
-}
-
-.awayGoals {
-    text-align: center;
+.explanation {
+    background-color: #CFE0C3;
+    min-height: 180px;
+    padding:2%;
+    margin-left: 23%;
 }
 
 /* Styling for Card */
@@ -69,13 +66,25 @@
 
 /* Styling for Match */
 
-.match {
+.matches {
     display:flex;
     flex-direction: column;
-    width:40%;
+    width:30%;
     border: 1px solid;
-    margin-left:30%;
+    margin-left:10%;
     padding: 1%;
+    background: #9EC1A3;
+}
+
+.calculatorWrapper {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:30%;
+    border: 1px solid;
+    margin-right:1%;
+    padding: 1%;
+    background: #9EC1A3;
 }
 
 

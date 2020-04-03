@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const fetch = require("node-fetch");
 
-// app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/api/teamInfo', (_, res) => {
     fetch('https://worldcup.sfg.io/teams/')
@@ -33,7 +33,7 @@ app.get('/api/teamInfo', (_, res) => {
         .then((data) => res.json(data))
       })
 
-  app.get('/:id', (req, res) => {
+  app.get('/api/:id', (req, res) => {
     fetch('https://worldcup.sfg.io/matches/country?fifa_code=' + req.params.id)
     .then((response) => response.json())
     .then((match) => match.map(({location, stage_name, home_team_country, away_team_country, datetime})=>({location, stage_name, home_team_country, away_team_country, datetime})))
