@@ -4,11 +4,12 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: left;
     margin: 0 0 0 0;
+    background-color: #CFE0C3;
 }
 
 .heading {
     min-height: 180px;
-    background-color: teal;
+    background-color: #70A9A1;
     margin: 0 0 0 0;
     padding: 3px 3px 3px 3px;
 }
@@ -63,8 +64,20 @@
     margin-left: 1%;
     margin-bottom: 1%;
     border-radius: 6%;
-    background-color: rgb(39, 158, 194);
+    background-color: #9EC1A3;
 }
+
+/* Styling for Match */
+
+.match {
+    display:flex;
+    flex-direction: column;
+    width:40%;
+    border: 1px solid;
+    margin-left:30%;
+    padding: 1%;
+}
+
 
 /* Styling for button */
 
@@ -114,3 +127,26 @@
   *, *::before, *::after {
     box-sizing: border-box;
   }
+
+  @media screen and (max-width: 680px) {
+
+    .information {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        width: 40%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 1%;
+        margin-left: 1%;
+        margin-bottom: 1%;
+        border-radius: 6%;
+        background-color: #9EC1A3;
+    }
+
+}

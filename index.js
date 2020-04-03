@@ -26,17 +26,19 @@ app.get('/api/teamInfo', (_, res) => {
     }
   }
 
-  app.get('/:id', (_, res) => {
-    fetch('https://worldcup.sfg.io/teams/')
+  app.get('/api/resultsNed', (_, res) => {
+    fetch('https://worldcup.sfg.io/matches/country?fifa_code=NED')
       .then((response) => response.json())
-      .then((items) => items.sort(sortMenuItems))
-      .then((team) => team.map(({country, fifa_code, group_letter})=>({country, fifa_code, group_letter})))
+      .then((match) => match.map(({location, stage_name, home_team_country, away_team_country, datetime})=>({location, stage_name, home_team_country, away_team_country, datetime})))
         .then((data) => res.json(data))
       })
 
-// app.get('*', (req,res) =>{
-//     res.sendFile(path.join(__dirname+'/client/build/index.html'));
-// });
+  app.get('/:id', (req, res) => {
+    fetch('https://worldcup.sfg.io/matches/country?fifa_code=' + req.params.id)
+    .then((response) => response.json())
+    .then((match) => match.map(({location, stage_name, home_team_country, away_team_country, datetime})=>({location, stage_name, home_team_country, away_team_country, datetime})))
+      .then((data) => res.json(data))
+    })
 
 const port = process.env.PORT || 5000;
 app.listen(port);

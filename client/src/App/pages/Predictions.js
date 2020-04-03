@@ -1,77 +1,101 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Match from './Match.js';
+import Calculations from './Calculations.js'
 import './Pages.css';
-
-const mockResult = 'away'
-
-function calculator(home, away) {
-  if (home < 0 || away < 0) {
-    return "error";
-  }
-  let result;
-  let userPoints = 0;
-  if (home > away) {
-    result = 'home';
-  }
-  if (away > home) {
-    result = 'away';
-  }
-  if (home === away) {
-    result = 'draw'
-  }
-  if (result === mockResult) {
-    userPoints += 5;
-  }
-  return userPoints;
-}
 
 class Predictions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      value: '',
+      results: [],
+      isLoading: false,
     }
   }
 
-  changeHandler = (event) => {
-    this.setState({
-      homeGoals: event.target.homeGoals,
-      awayGoals: event.target.homeGoals,
-    });
+  componentDidMount() {
+    this.setState({ isLoading: true })
+    fetch('/api/resultsNed')
+      .then((response) => response.json())
+      .then((data) => this.setState({ results: data, isLoading: false }))
+  }
+
+  renderMatches() {
+    const { results } = this.state
+    const allMatches = results.map((item, id) => <Match key={id} location={item.location} stage={item.stage_name} home={item.home_team_country} away={item.away_team_country} date={item.datetime} />);
+    return allMatches[5];
   }
 
   render() {
+    const { results, isLoading } = this.state;
+    if (isLoading) {
+      return <p>Loading...</p>
+    }
     return (
       <div className="homeWrapper">
         <div className="heading">
           <h1 className="mainTitle">Euro 2021 Predictor</h1>
           <Link to={'./'}>
-          <button className="predictButton">
+            <button className="predictButton">
               Back to team info!
-          </button>
+              </button>
           </Link>
         </div>
 
         <div className="predictions">
           <h3 className="subHeading">Your prediction for the next match</h3>
         </div>
+        <div className='matches'>
+          {this.renderMatches()}
+        </div>
 
-        <div className="inputFields">
-        <div className="homeGoals">
-          <div>Home goals</div>
-          <input type="text" value={this.state.homeGoals} onChange={this.changeHandler} />
-          <div>{this.state.homeGoals}</div>
+        <div className="calculatorWrapper">
+          <h3 className="calcHeading">Fill in your scores</h3>
+          <Calculations />
         </div>
-        <div className="awayGoals">
-          <div>Away goals</div>
-          <input type="text" value={this.state.awayGoals} onChange={this.changeHandler} />
-          <div>{this.state.awayGoals}</div>
-        </div>
-      </div>
+
       </div>
     );
   }
 }
+
+
+// class Predictions extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       name: '',
+//       value: '',
+//     }
+//   }
+
+//   changeHandler = (event) => {
+//     this.setState({
+//       homeGoals: event.target.homeGoals,
+//       awayGoals: event.target.homeGoals,
+//     });
+//   }
+
+//   render() {
+//     return (
+//       <div className="homeWrapper">
+//         <div className="heading">
+//           <h1 className="mainTitle">Euro 2021 Predictor</h1>
+//           <Link to={'./'}>
+//           <button className="predictButton">
+//               Back to team info!
+//           </button>
+//           </Link>
+//         </div>
+
+//         <div className="predictions">
+//           <h3 className="subHeading">Your prediction for the next match</h3>
+//         </div>
+
+//         <div className="matchInfo">
+//           <
+
+
+//         </div>
 
 export default Predictions;
